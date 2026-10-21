@@ -1,0 +1,14 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": null,
+  "cleanUrls": false,
+  "rewrites": [
+    { "source": "/", "destination": "/web/index.html" },
+    { "source": "/css/:path*", "destination": "/web/css/:path*" },
+    { "source": "/:file(islands|arms|study).js", "destination": "/web/:file.js" }
+  ],
+  "headers": [
+    { "source": "/runs/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }] }
+  ]
+}
