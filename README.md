@@ -6,7 +6,7 @@ prey breed.
 
 ![Prey and predator designs on a tidally locked planet trading places over 600 generations](docs/hero.gif)
 
-Live demo: <LIVE_URL>
+Live demo: https://darwins-world.vercel.app
 
 Creatures are written in plain English ("a coat of hollow hairs that trap warm air"). [Jev](https://docs.typesafe.ai),
 TypeSafe's judgment model, answers narrow questions such as "could this creature survive the polar winter?" or "does
