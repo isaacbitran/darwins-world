@@ -15,3 +15,5 @@ frames/
 cache/*
 !cache/island_answers.tsv.gz
 docs/LAUNCH.md
+.vercel
+.env*
