@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Darwin's World</title>
+<meta name="description" content="An evolution simulation whose only law of nature is a judgment model's yes-or-no answers. What evolves on seven islands, and when predators and prey enter an arms race.">
+<link rel="stylesheet" href="css/study.css">
+<link rel="stylesheet" href="css/darwin.css">
+</head>
+<body>
+<header class="top"><div class="in">
+ <a class="brand" href="#islands" data-p="islands">Darwin's World</a>
+ <nav class="tabs" id="tabs" aria-label="Parts">
+  <button data-p="islands" class="on"><span class="n">1</span>The islands</button>
+  <button data-p="arms"><span class="n">2</span>The arms race</button>
+ </nav>
+</div></header>
+
+<main>
+<div class="mast">
+ <div class="kicker">An interactive study</div>
+ <h1>Darwin's World</h1>
+ <p class="abstract">When an AI model's yes-or-no judgments are the only law of nature, evolution finds the adaptations its common sense expects. A sustained predator-prey arms race appears only when predators alone decide which prey breed, a rule chosen after the first rule produced none.</p>
+ <div class="byline"><span class="au">Isaac Bitran</span><span class="sep">·</span>Brown University<span class="sep">·</span>October 2026</div>
+ <ol class="contents c2">
+  <li><a href="#islands" data-p="islands"><span class="n">1</span><span class="t">What does evolution produce when an AI's common sense is the physics?</span><span class="d">What common sense expects: the tundra island grows thick coats and pale colour in 5 of 5 runs.</span></a></li>
+  <li><a href="#arms" data-p="arms"><span class="n">2</span><span class="t">Does anything emerge that the AI wasn't directly asked?</span><span class="d">Not when habitat fit also decides who breeds. When only predators decide, an arms race that per-animal scores cannot produce.</span></a></li>
+ </ol>
+</div>
+
+<!-- ============ PART 1 ============ -->
+<section class="part on" id="part-islands">
+ <div class="head">
+  <div class="kicker">Part 1 · The islands</div>
+  <h2>What does evolution produce when an AI's common sense is the physics?</h2>
+  <p class="answer">What that common sense expects: on the tundra island, insulating coats spread from 21% of the population to 86–95% and pale colour from 18% to 71–89%, in 5 of 5 runs; the other six islands end at 16% and 8%.</p>
+  <p class="lede">Seven islands start with the same 300 random creatures, each written as 8 plain-English traits such as "a coat of hollow hairs that trap warm air". Every generation, <b>Jev</b> (TypeSafe's judgment model, which answers a yes-or-no question with a probability) judges whether each creature can find food, live in its habitat and survive the island's hard season, and whether one creature could catch and eat another. Survival, breeding, mutation and migration are ordinary code that never reads what a trait means.</p>
+ </div>
+ <figure class="fig" id="fig-islands" data-mode="map">
+  <div class="fh"><span class="fn">Figure 1</span><span class="ft">Seven islands, one random founding population, 80 generations</span></div>
+  <div class="bar">
+   <div class="seg" id="i-modes"><button data-m="map" class="on">Islands</button><button data-m="conv">All 5 runs</button><button data-m="web">Food web</button></div>
+   <div class="seg" id="i-seeds"></div>
+  </div>
+  <div class="seg sub" id="i-webisl" hidden></div>
+  <div class="iview">
+   <div class="pane mapp">
+    <div class="cv" id="i-mapcv"><canvas id="i-map" aria-label="Island map: every creature alive in the current generation"></canvas><div class="itip" id="i-tip"></div><div class="cap" id="i-cap"></div></div>
+   </div>
+   <div class="pane treep">
+    <div class="ph"><div class="pt"><b>Tree of life</b></div><div class="ps" id="i-spcount"></div></div>
+    <div class="cv"><canvas id="i-tree" aria-label="Tree of life: each branch is a species, outward is time"></canvas></div>
+   </div>
+   <div class="pane widep"><div class="cv"><canvas id="i-wide"></canvas></div><div class="note" id="i-wnote"></div></div>
+  </div>
+  <div class="events" id="i-events"></div>
+  <div class="transport">
+   <button class="play" id="i-play" aria-label="Pause"></button>
+   <input type="range" id="i-range" min="0" max="80" step="0.01" value="0" aria-label="Generation">
+   <span class="t" id="i-gen">Generation 0</span>
+   <div class="seg" id="i-speeds"><button data-s="0.5">0.5×</button><button data-s="1" class="on">1×</button><button data-s="2">2×</button><button data-s="4">4×</button></div>
+  </div>
+  <div class="howto">
+   <h4>How to read this picture</h4>
+   <ul>
+    <li><span class="ic"><i class="dot" style="background:#f4f8ff;box-shadow:0 0 0 1.2px #555"></i><i class="dot" style="background:#8a5a3c"></i></span><span>Each mark is one creature, in its own colour. Shape is its coat: star = fur, triangle = feathers, oval = blubber, diamond = scales, hexagon = armour, circle = bare.</span></li>
+    <li><span class="ic"><i class="ring" style="border-color:#b5432f"></i></span><span>A red flash is a creature being eaten. Red ripples mark a species going extinct.</span></li>
+    <li><span class="ic"><i class="ln" style="background:#2a78d6"></i></span><span>Tree of life: each branch is a species with 25+ members, coloured by its home island; outward is time, thickness is population.</span></li>
+    <li><span class="ic"><i class="tap"></i></span><span>Hover a creature to read its 8 traits; click to pin it and highlight its family. Space bar plays.</span></li>
+   </ul>
+  </div>
+  <div class="ckey"><span>Adaptations taking over: share of each island's population with the feature, now</span></div>
+  <div class="acards" id="i-cards"></div>
+ </figure>
+ <div class="keys">
+  <div class="stat"><div class="lab">Tundra island: insulating coat</div><div class="vals"><div class="v"><b>86–95%</b><span>at the end of each of 5 runs, from 21%</span></div></div><div class="foot">16% on the other six islands.</div></div>
+  <div class="stat"><div class="lab">Tundra island: white or pale colour</div><div class="vals"><div class="v"><b>71–89%</b><span>at the end of each run, from 18%</span></div></div><div class="foot">8% on the other islands. No rule mentions camouflage.</div></div>
+  <div class="stat"><div class="lab">Open-ocean island: swims</div><div class="vals"><div class="v"><b>94–99%</b><span>at the end of each run, from 36%</span></div></div><div class="foot">21% on the other islands.</div></div>
+  <div class="stat"><div class="lab">Cave island: cave senses</div><div class="vals"><div class="v"><b>90–99%</b><span>blind, echolocation, whiskers…, from 30%</span></div></div><div class="foot">21% on the other islands.</div></div>
+ </div>
+ <details class="more">
+  <summary>Details: how it works, controls and limits</summary>
+  <div class="body">
+   <div><h4>One generation, on every island</h4><ol>
+    <li><b>Encounters.</b> Each meat-eater meets 2 random neighbours. Jev answers "On this island, could the first creature catch and eat the second?" The kill happens with probability 0.7 × p².</li>
+    <li><b>Survival.</b> Jev answers three questions with the island's description: food, daily habitat, and the hard season (a nine-month polar winter, a two-year drought, an eruption). Fitness is the geometric mean of the three answers; survival probability is 0.12 + 0.88 × fitness<sup>1.5</sup>. Creatures die of old age after 5 generations.</li>
+    <li><b>Breeding.</b> Survivors refill the island to 300, parents chosen in proportion to fitness squared. A child takes each trait from one parent; each trait mutates with probability 0.06.</li>
+    <li><b>Migration.</b> 0.4% of creatures drift to a neighbouring island each generation (1.2% for swimmers and fliers).</li>
+   </ol></div>
+   <div><h4>Controls</h4>
+    <p><b>Five independent runs.</b> Different random founders and seeds, 80 generations each, about 450,000 creatures in total.</p>
+    <p><b>The other islands.</b> Every island starts from the same founders, so each feature's share on the six other islands is the comparison for the island where it spreads.</p>
+    <p><b>What did not converge.</b> Deserts did not evolve nocturnal burrowers: burrowing passed 50% in no run. Large bodies win everywhere (63% across islands), because Jev rarely judges that a small predator can catch a rhino-sized creature.</p>
+   </div>
+   <div><h4>Limits</h4><ul>
+    <li>Each island's fitness is a fixed function of one genome and one island, so evolution here is a slow climb to whatever Jev rates highest. Nothing appears that a single question did not already contain. Part 2 tests that critique.</li>
+    <li>Jev has read about real animals. This tests whether its common sense is coherent enough to drive selection, not biology.</li>
+    <li>One hand-written pool of 394 trait phrases and seven island descriptions.</li>
+    <li>All 1.4 million island answers are committed (10 MB), so the five runs replay exactly with no Jev calls; a new run with other settings calls Jev (about USD 1.50 per run).</li>
+   </ul></div>
+  </div>
+ </details>
+</section>
+
+<!-- ============ PART 2 ============ -->
+<section class="part" id="part-arms">
+ <div class="head">
+  <div class="kicker">Part 2 · The arms race</div>
+  <h2>Does anything emerge that the AI wasn't directly asked?</h2>
+  <p class="answer">Only under a rule chosen after the first one failed. When predators alone decide which prey breed, the most common prey design changes 6 to 13 times per run, against 0 to 5 in the controls. When Jev's habitat-fit score also weights breeding, there is no arms race.</p>
+  <p class="lede">Prey and predators each have 64 possible designs, built from two plain-English phrases: how prey escape and what happens when they are caught, how predators hunt and what weapon or sense they use. Jev answered all 4,096 questions "does this predator usually catch and eat this prey?" once per world; the simulation replays those answers for 1,000 prey and 200 predators over 600 generations. Because a prey design's chance of survival depends on which predators exist right now, and the reverse, there is <b>no fixed best design</b> unless Jev's answers collapse into one.</p>
+ </div>
+ <figure class="fig" id="fig-arms">
+  <div class="fh"><span class="fn">Figure 2</span><span class="ft">Prey and predators evolving against each other</span></div>
+  <div class="rcap" id="a-cap"></div>
+  <div class="bar"><div class="seg" id="a-worlds"></div><div class="seg" id="a-rules"></div><div class="seg" id="a-seeds"></div></div>
+  <div class="note" id="a-note"></div>
+  <div class="aview">
+   <div class="pane"><div class="ph"><div class="pt"><i class="sw" style="background:#1f8a7a"></i><b>Prey</b></div><div class="ps">escape strategy × what happens when caught</div></div><div class="cv pad"><canvas id="a-preyGrid" aria-label="Prey designs"></canvas></div></div>
+   <div class="pane"><div class="ph"><div class="pt"><i class="sw" style="background:#b5432f"></i><b>Predators</b></div><div class="ps">hunting mode × weapon or sense</div></div><div class="cv pad"><canvas id="a-predGrid" aria-label="Predator designs"></canvas></div></div>
+   <div class="pane"><div class="ph"><div class="pt"><b>Now</b></div><div class="ps">the current most common designs</div></div><div class="cv pad nowc"><div id="a-now"></div></div></div>
+  </div>
+  <div class="streams">
+   <div class="ph"><div class="pt"><b>Prey escape strategy</b></div><div class="ps">share of the 1,000 prey, generation 0 to 600</div></div>
+   <div class="cv pad"><canvas id="a-preyStream" aria-label="Prey escape strategy over time"></canvas></div>
+   <div class="ph"><div class="pt"><b>Predator hunting mode</b></div><div class="ps">share of the 200 predators</div></div>
+   <div class="cv pad"><canvas id="a-predStream" aria-label="Predator hunting mode over time"></canvas></div>
+  </div>
+  <div class="transport">
+   <button class="play" id="a-play" aria-label="Pause"></button>
+   <input type="range" id="a-range" min="0" max="600" step="0.1" value="0" aria-label="Generation">
+   <span class="t" id="a-gen">Generation 0</span>
+   <div class="seg" id="a-speeds"><button data-s="10">1×</button><button data-s="25" class="on">2×</button><button data-s="60">5×</button></div>
+  </div>
+  <div class="howto">
+   <h4>How to read this picture</h4>
+   <ul>
+    <li><span class="ic"><i class="dot" style="background:#1f8a7a"></i><i class="dot" style="background:#b5432f"></i></span><span>Dot area is the design's share of its population. Hover any cell to read the design in full.</span></li>
+    <li><span class="ic"><i class="dot sq" style="background:rgba(181,67,47,.45)"></i></span><span>Cell shade: for prey, how often today's predators kill that design; for predators, how often that design kills today's prey.</span></li>
+    <li><span class="ic"><i class="ln" style="background:#2a78d6"></i></span><span>The bands below show which strategy dominates over time. A change counts when a new most common prey design holds for 10+ generations.</span></li>
+    <li><span class="ic"><i class="tap"></i></span><span>Pick a world, a selection rule and a run above. Space bar plays.</span></li>
+   </ul>
+  </div>
+  <div class="charts c2">
+   <div class="chart"><div class="ct"><b>Changes of the most common prey design per run</b>, Jev's answers against three controls (<span id="a-rset">this rule</span>)</div><canvas id="a-ctrl" style="height:176px"></canvas><div class="cn" id="a-ctrlnote"></div></div>
+   <div class="chart"><div class="ct"><b>Time-shift test</b>: kill rate of predators from another generation against today's prey, relative to today's predators</div><canvas id="a-shift" style="height:176px"></canvas><div class="cn" id="a-shiftnote"></div></div>
+  </div>
+ </figure>
+ <div class="keys">
+  <div class="stat"><div class="lab">Changes of the most common prey design per run, selection by predators only</div><div class="vals"><div class="v"><b>6–13</b><span>Jev's answers, 15 runs</span></div><div class="v"><b>0–5</b><span>controls, 30 runs</span></div></div><div class="foot">Controls: no-interaction table and fixed predators.</div></div>
+  <div class="stat"><div class="lab">Predators from 20 generations later kill today's prey more often than predators from 20 generations earlier</div><div class="vals"><div class="v"><b>15 of 15</b><span>runs, by 0.37 to 1.87 points</span></div></div><div class="foot">Within 0.05 points of zero in all 30 control runs.</div></div>
+  <div class="stat"><div class="lab">Selection by habitat fit and predators</div><div class="vals"><div class="v"><b>0</b><span>changes of the most common prey design, in 13 of 15 runs</span></div></div><div class="foot">Prey settle on the design with the best habitat-fit score: a hill-climb.</div></div>
+  <div class="stat"><div class="lab">Share of Jev's answers that per-animal scores explain</div><div class="vals"><div class="v"><b>67–80%</b><span>by world, fit as predator score + prey score</span></div></div><div class="foot">The rest is pairwise interaction. All 12,672 answers cost USD 0.046.</div></div>
+ </div>
+ <details class="more">
+  <summary>Details: how it works, controls and limits</summary>
+  <div class="body">
+   <div><h4>One generation</h4><ol>
+    <li><b>Hunt.</b> Each predator makes 15 attacks on random prey (5 when habitat fit also selects). An attack by predator i on prey j kills with probability equal to Jev's answer for that pair.</li>
+    <li><b>Breed.</b> Surviving prey breed back to 1,000; predators breed back to 200 in proportion to kills + 0.25. When habitat fit also selects, both are weighted by the square of Jev's habitat-fit answer ("could this animal find food and raise young here?").</li>
+    <li><b>Mutate.</b> Each of a child's two phrases changes with probability 0.01.</li>
+   </ol>
+   <p>Three worlds change Jev's answers: an Earth river valley, a tidally locked planet (life in a ring of permanent dusk) and a planet with 3× Earth gravity. Jev sees one predator, one prey and the world description; it never sees a population.</p></div>
+   <div><h4>Controls, same code and seeds</h4>
+    <p><b>No-interaction table.</b> Jev's 4,096 answers replaced by their best fit as "predator danger + prey vulnerability". It keeps everything per-animal scores can say and removes every predator-prey interaction.</p>
+    <p><b>Fixed predators.</b> A fresh even mix of predators every generation, so prey face a fixed environment.</p>
+    <p><b>Shuffled answers.</b> Jev's values randomly reassigned to pairs. It cycles more (13–24 changes) because noise has more interaction than Jev's structured table; the cycles under Jev follow sensible pairs, such as "flier, tiny" against "diver, tiny" while aerial divers hunt.</p>
+   </div>
+   <div><h4>Limits</h4><ul>
+    <li><b>The predators-only rule was chosen after the habitat-fit rule produced no arms race.</b> Both rules are in the data and the figure; the constants were not tuned further.</li>
+    <li>With habitat fit in the breeding weight, the critique holds: habitat fit outweighs predation, so prey climb to one design and stay (0 changes in 13 of 15 runs, the same final prey as both controls in 15 of 15).</li>
+    <li>One set of 8 × 8 phrases, written by me, and three world descriptions. Different phrases would give a different table.</li>
+    <li>Five runs per condition per world; populations of 1,000 and 200, so drift shows in the controls (up to 5 changes with fixed predators on Earth).</li>
+   </ul></div>
+  </div>
+ </details>
+</section>
+</main>
+<footer><div class="in">All numbers come from the recorded runs in <code>runs/</code> and <code>runs/arms/index.json</code>; every Jev answer behind both parts is committed. Model <code>jev-1.13.0</code>; total spend USD 8.27 for about 1.43 million questions. Code, data and methods: <a href="https://github.com/isaacbitran/darwins-world">github.com/isaacbitran/darwins-world</a>.</div></footer>
+
+<div id="a-tip" class="gtip"></div>
+<script src="islands.js"></script>
+<script src="arms.js"></script>
+<script src="study.js"></script>
+</body>
+</html>

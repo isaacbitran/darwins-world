@@ -1,0 +1,17 @@
+# secrets
+.env
+.env.*
+!.env.example
+# local spend log (one line per Jev call: tokens, latency)
+ledger.jsonl
+# local environment and render scratch
+.venv/
+__pycache__/
+*.pyc
+frames/
+.DS_Store
+.vercel/
+# cache: the real island answers are committed; mock-mode answers and old pickles are not
+cache/*
+!cache/island_answers.tsv.gz
+docs/LAUNCH.md

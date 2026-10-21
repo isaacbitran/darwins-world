@@ -1,0 +1,9 @@
+.venv
+.env
+.env.*
+cache
+frames
+ledger.jsonl
+darwin
+docs
+runs/*.log
