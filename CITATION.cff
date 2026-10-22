@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+type: software
+title: "Darwin's World: evolution with common sense as physics"
+abstract: "An evolution simulation whose only law of nature is a judgment model's yes/no answers; reproduces expected adaptations and shows a sustained predator-prey arms race under predators-only selection."
+authors:
+  - family-names: Bitran
+    given-names: Isaac
+    affiliation: Brown University
+repository-code: "https://github.com/isaacbitran/darwins-world"
+url: "https://darwins-world.vercel.app"
+license: MIT
+version: "1.0"
+date-released: "2026-10-21"
+keywords:
+  - artificial life
+  - evolution simulation
+  - coevolution
+  - judgment models
